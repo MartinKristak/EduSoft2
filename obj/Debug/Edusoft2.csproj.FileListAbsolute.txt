@@ -1,0 +1,8 @@
+C:\Users\matia\OneDrive\Dokumenty\SharpDevelop Projects\Edusoft2\bin\Debug\Edusoft2.exe.config
+C:\Users\matia\OneDrive\Dokumenty\SharpDevelop Projects\Edusoft2\bin\Debug\Edusoft2.exe
+C:\Users\matia\OneDrive\Dokumenty\SharpDevelop Projects\Edusoft2\bin\Debug\Edusoft2.pdb
+C:\Users\matia\OneDrive\Dokumenty\SharpDevelop Projects\Edusoft2\obj\Debug\Edusoft2.csprojResolveAssemblyReference.cache
+C:\Users\matia\OneDrive\Dokumenty\SharpDevelop Projects\Edusoft2\obj\Debug\Edusoft2.MainForm.resources
+C:\Users\matia\OneDrive\Dokumenty\SharpDevelop Projects\Edusoft2\obj\Debug\Edusoft2.csproj.GenerateResource.Cache
+C:\Users\matia\OneDrive\Dokumenty\SharpDevelop Projects\Edusoft2\obj\Debug\Edusoft2.exe
+C:\Users\matia\OneDrive\Dokumenty\SharpDevelop Projects\Edusoft2\obj\Debug\Edusoft2.pdb

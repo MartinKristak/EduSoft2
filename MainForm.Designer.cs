@@ -17,9 +17,11 @@ namespace Edusoft2
 		private System.Windows.Forms.Button vlavo_btn;
 		private System.Windows.Forms.Button vpravo_btn;
 		private System.Windows.Forms.Button vpred_btn;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button button5;
+		private System.Windows.Forms.Button opakuj_btn;
+		private System.Windows.Forms.Button koniecOpak_btn;
 		private System.Windows.Forms.TextBox cmd;
+		private System.Windows.Forms.Button vykonaj_btn;
+		private System.Windows.Forms.Label label1;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -45,9 +47,11 @@ namespace Edusoft2
 			this.vlavo_btn = new System.Windows.Forms.Button();
 			this.vpravo_btn = new System.Windows.Forms.Button();
 			this.vpred_btn = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
-			this.button5 = new System.Windows.Forms.Button();
+			this.opakuj_btn = new System.Windows.Forms.Button();
+			this.koniecOpak_btn = new System.Windows.Forms.Button();
 			this.cmd = new System.Windows.Forms.TextBox();
+			this.vykonaj_btn = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// vlavo_btn
@@ -80,23 +84,25 @@ namespace Edusoft2
 			this.vpred_btn.UseVisualStyleBackColor = true;
 			this.vpred_btn.Click += new System.EventHandler(this.Vpred_btnClick);
 			// 
-			// button4
+			// opakuj_btn
 			// 
-			this.button4.Location = new System.Drawing.Point(904, 512);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(112, 72);
-			this.button4.TabIndex = 3;
-			this.button4.Text = "button4";
-			this.button4.UseVisualStyleBackColor = true;
+			this.opakuj_btn.Location = new System.Drawing.Point(872, 512);
+			this.opakuj_btn.Name = "opakuj_btn";
+			this.opakuj_btn.Size = new System.Drawing.Size(144, 104);
+			this.opakuj_btn.TabIndex = 3;
+			this.opakuj_btn.Text = "Opakuj 1 krát";
+			this.opakuj_btn.UseVisualStyleBackColor = true;
+			this.opakuj_btn.Click += new System.EventHandler(this.Opakuj_btnClick);
 			// 
-			// button5
+			// koniecOpak_btn
 			// 
-			this.button5.Location = new System.Drawing.Point(1088, 520);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(112, 72);
-			this.button5.TabIndex = 4;
-			this.button5.Text = "button5";
-			this.button5.UseVisualStyleBackColor = true;
+			this.koniecOpak_btn.Location = new System.Drawing.Point(1088, 520);
+			this.koniecOpak_btn.Name = "koniecOpak_btn";
+			this.koniecOpak_btn.Size = new System.Drawing.Size(144, 96);
+			this.koniecOpak_btn.TabIndex = 4;
+			this.koniecOpak_btn.Text = "Koniec opakovania";
+			this.koniecOpak_btn.UseVisualStyleBackColor = true;
+			this.koniecOpak_btn.Click += new System.EventHandler(this.KoniecOpak_btnClick);
 			// 
 			// cmd
 			// 
@@ -107,14 +113,34 @@ namespace Edusoft2
 			this.cmd.Size = new System.Drawing.Size(464, 400);
 			this.cmd.TabIndex = 6;
 			// 
+			// vykonaj_btn
+			// 
+			this.vykonaj_btn.Location = new System.Drawing.Point(784, 1056);
+			this.vykonaj_btn.Name = "vykonaj_btn";
+			this.vykonaj_btn.Size = new System.Drawing.Size(312, 88);
+			this.vykonaj_btn.TabIndex = 7;
+			this.vykonaj_btn.Text = "Vykonaj príkazy";
+			this.vykonaj_btn.UseVisualStyleBackColor = true;
+			this.vykonaj_btn.Click += new System.EventHandler(this.Vykonaj_btnClick);
+			// 
+			// label1
+			// 
+			this.label1.Location = new System.Drawing.Point(24, 976);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(360, 208);
+			this.label1.TabIndex = 8;
+			this.label1.Text = "label1";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1304, 1157);
+			this.ClientSize = new System.Drawing.Size(1532, 1209);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.vykonaj_btn);
 			this.Controls.Add(this.cmd);
-			this.Controls.Add(this.button5);
-			this.Controls.Add(this.button4);
+			this.Controls.Add(this.koniecOpak_btn);
+			this.Controls.Add(this.opakuj_btn);
 			this.Controls.Add(this.vpred_btn);
 			this.Controls.Add(this.vpravo_btn);
 			this.Controls.Add(this.vlavo_btn);

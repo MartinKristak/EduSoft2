@@ -60,7 +60,7 @@ namespace Edusoft2
 		}
 		void Opakuj_btnClick(object sender, EventArgs e)
 		{
-			cmd.AppendText("Opakuj 1  krát");
+			cmd.AppendText("Opakuj 1 krat");
 			cmd.AppendText(Environment.NewLine);	
 		}
 		void KoniecOpak_btnClick(object sender, EventArgs e)
@@ -70,17 +70,55 @@ namespace Edusoft2
 			
 		}
 		void Vykonaj_btnClick(object sender, EventArgs e)
-		{
-			string commands = cmd.Text; 
-			string[] commandList = commands.Split('\n');
+		{			
+			string[] commandList = cmd.Text.Split('\n');
+			List<string> commands = new List<string>();
+			List<string> repeat_commands = new List<string>();			
+			int repeat_num = 1; 
 			for (int i = 0; i<commandList.Length; i++) {								
-				if (commandList[i].Trim().Equals("Vpred")) 
-					player.move();									
-				if (commandList[i].Trim().Equals("Vlavo")) 
-					player.turn_left();
-				if (commandList[i].Trim().Equals("Vpravo")) 
-					player.turn_right();														
+				String command = commandList[i].Trim();								
+				if (command.Equals("Vpred")) {								
+					if (repeat_num == 1)
+						commands.Add(command);
+					else 
+						repeat_commands.Add(command);
+				}
+				if (command.Equals("Vlavo")) {								
+					if (repeat_num == 1)				
+						commands.Add(command);
+					else 
+						repeat_commands.Add(command);
+				}
+				if (command.Equals("Vpravo")) {
+					if (repeat_num == 1)				
+						commands.Add(command);
+					else 
+						repeat_commands.Add(command);
+				}
+				if (command.Equals("Koniec opakovania")) {
+					for (int x = 0; x<repeat_num; x++) {
+						foreach (string comm in repeat_commands)
+							commands.Add(comm); 
+					}
+					repeat_num = 1; 
+					repeat_commands = new List<String>(); 
+				}
+				if (command.Length > 8 && command.Substring(0, 6).Equals("Opakuj") && command.IndexOf("krat") > 0) {
+					string number_string = command.Substring(command.IndexOf(' ')).Trim();
+					repeat_num = Int32.Parse(number_string = number_string.Substring(0, number_string.IndexOf(' ')));					
+				}					
+					
 			}
+			foreach (string command in commands) {
+				label1.Text += command; 
+				if (command.Equals("Vpred")) 							
+					player.move();
+				if (command.Equals("Vlavo")) 
+					player.turn_left(); 
+				if (command.Equals("Vpravo")) 
+					player.turn_right();
+			}
+					
 			Invalidate();			
 		}
 		

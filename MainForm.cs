@@ -1,48 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Edusoft2
 {	
 	public partial class MainForm : Form	
 	{		
-		static int[,] playground = {
-			{1, 0, 0, 0, 0, 0, 0, 1},
-			{0, 0, 0, 0, 0, 0, 0, 0},
-			{0, 0, 0, 1, 1, 0, 0, 0},
-			{0, 0, 1, 1, 1, 1, 0, 0},
-			{0, 0, 1, 1, 1, 1, 0, 0},
-			{0, 0, 0, 1, 1, 0, 0, 0},
-			{0, 0, 0, 0, 0, 0, 0, 0},
-			{2, 0, 0, 0, 0, 0, 0, 1}};
+		int playground_size = 240;		
+		static int[,] playground;
 		Player player; 
 		public MainForm()
 		{			
-			InitializeComponent();									
-			player = new Player();
+			InitializeComponent();												
+			loadPlayground(); 
 		}
 		
 		protected override void OnPaint(PaintEventArgs e) {
+			int cell_size = playground_size / Convert.ToInt32(Math.Sqrt(playground.Length));
 			Graphics g = CreateGraphics();
-			for (int i = 0; i<8; i++) {
-				for (int j = 0; j<8; j++) {
+			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
+				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
 			    		if (playground[i, j] == 0) {
-			    			g.FillRectangle(Brushes.White, j*40, i*40, 40, 40); 			    		
-					    	g.DrawRectangle(Pens.Black, j*40, i*40, 40, 40);			    		
+			    			g.FillRectangle(Brushes.White, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
+					    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    		
 			    		}
 			    		else if (playground[i, j] == 1) {
-			    			g.FillRectangle(Brushes.White, j*40, i*40, 40, 40); 			    		
-					    	g.DrawRectangle(Pens.Black, j*40, i*40, 40, 40);			    		
-			    			g.FillEllipse(Brushes.Yellow, j*40+10, i*40+10, 20, 20); 	    						    				
+			    			g.FillRectangle(Brushes.White, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
+					    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    		
+			    			g.FillEllipse(Brushes.Yellow, j*cell_size+cell_size/4, i*cell_size+cell_size/4, cell_size/2, cell_size/2); 	    						    				
 			    		}
 			    		else if (playground[i, j] == 2) {
-			    			g.FillRectangle(Brushes.Blue, j*40, i*40, 40, 40); 			    		
-					    	g.DrawRectangle(Pens.Black, j*40, i*40, 40, 40);			    					    			
+			    			g.FillRectangle(Brushes.Blue, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
+					    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    					    			
 			    		}
 			    	}	    				
 			}
 		}
+		
+		void loadPlayground() {
+			StreamReader r = new StreamReader("mapy/sada1/1.txt");			
+			string name = r.ReadLine();
+			int size = Int32.Parse(r.ReadLine().Trim().Split(' ')[0]);
+			playground = new int[size, size];
+			string[] player_pos = r.ReadLine().Trim().Split(' ');
+			int player_x = Int32.Parse(player_pos[0]);
+			int player_y = Int32.Parse(player_pos[1]);				
+			playground[player_x, player_y] = 2;			
+			while (!r.EndOfStream) 
+			{
+				string[] coin_pos = r.ReadLine().Trim().Split(' ');
+				int pos_x = Int32.Parse(coin_pos[0]);
+				int pos_y = Int32.Parse(coin_pos[1]);				
+				playground[pos_x, pos_y] = 1; 
+			}
+			r.Close();
+			player = new Player();			
+		}
+		
 		void Vlavo_btnClick(object sender, EventArgs e)
 		{
 			cmd.AppendText("Vlavo");
@@ -62,6 +78,7 @@ namespace Edusoft2
 		{
 			cmd.AppendText("Opakuj 1 krat");
 			cmd.AppendText(Environment.NewLine);	
+			label1.Text = playground.Length.ToString(); 
 		}
 		void KoniecOpak_btnClick(object sender, EventArgs e)
 		{
@@ -143,8 +160,8 @@ namespace Edusoft2
 			}
 	
 			void find_position() {
-				for (int i = 0; i<8; i++) {
-					for (int j = 0; j<8; j++) {
+				for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
+					for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
 				    		if (playground[i, j] == 2) {
 							this.pos_x = j; 
 							this.pos_y = i; 

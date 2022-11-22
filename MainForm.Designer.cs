@@ -22,6 +22,10 @@ namespace Edusoft2
 		private System.Windows.Forms.TextBox cmd;
 		private System.Windows.Forms.Button vykonaj_btn;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Button nasledujuca_btn;
+		private System.Windows.Forms.Button predchadzajuca_btn;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -52,6 +56,10 @@ namespace Edusoft2
 			this.cmd = new System.Windows.Forms.TextBox();
 			this.vykonaj_btn = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.nasledujuca_btn = new System.Windows.Forms.Button();
+			this.predchadzajuca_btn = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// vlavo_btn
@@ -115,7 +123,7 @@ namespace Edusoft2
 			// 
 			// vykonaj_btn
 			// 
-			this.vykonaj_btn.Location = new System.Drawing.Point(784, 1056);
+			this.vykonaj_btn.Location = new System.Drawing.Point(944, 1048);
 			this.vykonaj_btn.Name = "vykonaj_btn";
 			this.vykonaj_btn.Size = new System.Drawing.Size(312, 88);
 			this.vykonaj_btn.TabIndex = 7;
@@ -127,15 +135,55 @@ namespace Edusoft2
 			// 
 			this.label1.Location = new System.Drawing.Point(24, 976);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(360, 208);
+			this.label1.Size = new System.Drawing.Size(744, 64);
 			this.label1.TabIndex = 8;
 			this.label1.Text = "label1";
+			// 
+			// label2
+			// 
+			this.label2.Location = new System.Drawing.Point(240, 1032);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(216, 64);
+			this.label2.TabIndex = 9;
+			this.label2.Text = "label2";			
+			// 
+			// label3
+			// 
+			this.label3.Location = new System.Drawing.Point(248, 1128);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(216, 64);
+			this.label3.TabIndex = 10;
+			this.label3.Text = "label3";
+			// 
+			// nasledujuca_btn
+			// 
+			this.nasledujuca_btn.Location = new System.Drawing.Point(472, 1016);
+			this.nasledujuca_btn.Name = "nasledujuca_btn";
+			this.nasledujuca_btn.Size = new System.Drawing.Size(184, 184);
+			this.nasledujuca_btn.TabIndex = 11;
+			this.nasledujuca_btn.Text = "Nasledujúca úloha";
+			this.nasledujuca_btn.UseVisualStyleBackColor = true;
+			this.nasledujuca_btn.Click += new System.EventHandler(this.Nasledujuca_btnClick);
+			// 
+			// predchadzajuca_btn
+			// 
+			this.predchadzajuca_btn.Location = new System.Drawing.Point(24, 1032);
+			this.predchadzajuca_btn.Name = "predchadzajuca_btn";
+			this.predchadzajuca_btn.Size = new System.Drawing.Size(184, 160);
+			this.predchadzajuca_btn.TabIndex = 12;
+			this.predchadzajuca_btn.Text = "Predchádzajúca úloha";
+			this.predchadzajuca_btn.UseVisualStyleBackColor = true;
+			this.predchadzajuca_btn.Click += new System.EventHandler(this.Predchadzajuca_btnClick);
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1532, 1209);
+			this.ClientSize = new System.Drawing.Size(1526, 1209);
+			this.Controls.Add(this.predchadzajuca_btn);
+			this.Controls.Add(this.nasledujuca_btn);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.vykonaj_btn);
 			this.Controls.Add(this.cmd);
@@ -145,7 +193,7 @@ namespace Edusoft2
 			this.Controls.Add(this.vpravo_btn);
 			this.Controls.Add(this.vlavo_btn);
 			this.Name = "MainForm";
-			this.Text = "Edusoft2";
+			this.Text = "EduSoft2 - zbieranie mincí";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

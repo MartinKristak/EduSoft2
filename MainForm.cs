@@ -10,7 +10,10 @@ namespace Edusoft2
 	{		
 		int playground_size = 240;		
 		static int[,] playground;
-		Player player; 
+		Player player;		
+		int aktual_uloha =1; 
+		int pocet_uloh = 1;
+		int vyriesene_ulohy = 0; 
 		public MainForm()
 		{			
 			InitializeComponent();												
@@ -40,8 +43,12 @@ namespace Edusoft2
 		}
 		
 		void loadPlayground() {
-			StreamReader r = new StreamReader("mapy/sada1/1.txt");			
-			string name = r.ReadLine();
+			string path = "mapy/sada1/" + aktual_uloha.ToString() + ".txt";
+			StreamReader r = new StreamReader(path);			
+			label1.Text = r.ReadLine();
+			pocet_uloh = Directory.GetFiles(System.Environment.CurrentDirectory + "\\mapy\\sada1", "*", SearchOption.AllDirectories).Length;
+			label2.Text = "úloha " + aktual_uloha.ToString() + " z " + pocet_uloh.ToString();
+			label3.Text = "vyriešené úlohy: " + vyriesene_ulohy; 
 			int size = Int32.Parse(r.ReadLine().Trim().Split(' ')[0]);
 			playground = new int[size, size];
 			string[] player_pos = r.ReadLine().Trim().Split(' ');
@@ -57,6 +64,7 @@ namespace Edusoft2
 			}
 			r.Close();
 			player = new Player();			
+			Invalidate(); 
 		}
 		
 		void Vlavo_btnClick(object sender, EventArgs e)
@@ -137,6 +145,21 @@ namespace Edusoft2
 			}
 					
 			Invalidate();			
+		}
+		
+		void Predchadzajuca_btnClick(object sender, EventArgs e)
+		{
+			if (aktual_uloha > 1) {
+				aktual_uloha--;
+				loadPlayground();
+			}			 			
+		}
+		void Nasledujuca_btnClick(object sender, EventArgs e)
+		{	
+			if (aktual_uloha < pocet_uloh) {
+				aktual_uloha++; 
+				loadPlayground();
+			}			 
 		}
 		
 		

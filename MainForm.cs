@@ -19,34 +19,32 @@ namespace Edusoft2
 		{			
 			
 			InitializeComponent();	
-			
 			KeyPreview = true;
 			this.FormBorderStyle = FormBorderStyle.None;
-    		this.WindowState = FormWindowState.Maximized;
-			g = panel1.CreateGraphics();    		
+    		this.WindowState = FormWindowState.Maximized;    		
 			loadPlayground(); 
 		}
 		
 		protected override void OnPaint(PaintEventArgs e) {
-			playground_size = Math.Min(panel1.Width, panel1.Height) - 150;
+			g = panel1.CreateGraphics();
+			playground_size = Math.Min(panel1.Width, panel1.Height);
 			int cell_size = playground_size / Convert.ToInt32(Math.Sqrt(playground.Length));
 			
 			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
 				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
-			    		if (playground[i, j] == 0) {
-			    			g.FillRectangle(Brushes.White, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
-					    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    		
-			    		}
-			    		else if (playground[i, j] == 1) {
-			    			g.FillRectangle(Brushes.White, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
-					    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    		
-			    			g.FillEllipse(Brushes.Yellow, j*cell_size+cell_size/4, i*cell_size+cell_size/4, cell_size/2, cell_size/2); 	    						    				
-			    		}
-			    		else if (playground[i, j] == 2) {
-			    			g.FillRectangle(Brushes.Blue, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
-					    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    					    			
-			    		}
-			    	}	    				
+						g.FillRectangle(Brushes.White, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
+				    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);
+			    	if (playground[i, j] == 0) {
+			    		//pass		    		
+			    	}
+			    	else if (playground[i, j] == 1) {		    		
+			    		g.FillEllipse(Brushes.Yellow, j*cell_size+cell_size/4, i*cell_size+cell_size/4, cell_size/2, cell_size/2); 	    						    				
+			    	}
+			    	else if (playground[i, j] == 2) {
+			    		g.FillRectangle(Brushes.Blue, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
+				    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    					    			
+			    	}
+			    }	    				
 			}
 		}
 		

@@ -26,6 +26,7 @@ namespace Edusoft2
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button nasledujuca_btn;
 		private System.Windows.Forms.Button predchadzajuca_btn;
+		private System.Windows.Forms.Button znova_btn;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -60,6 +61,7 @@ namespace Edusoft2
 			this.label3 = new System.Windows.Forms.Label();
 			this.nasledujuca_btn = new System.Windows.Forms.Button();
 			this.predchadzajuca_btn = new System.Windows.Forms.Button();
+			this.znova_btn = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// vlavo_btn
@@ -98,7 +100,7 @@ namespace Edusoft2
 			this.opakuj_btn.Name = "opakuj_btn";
 			this.opakuj_btn.Size = new System.Drawing.Size(144, 104);
 			this.opakuj_btn.TabIndex = 3;
-			this.opakuj_btn.Text = "Opakuj 1 krát";
+			this.opakuj_btn.Text = "Opakuj 2 krat";
 			this.opakuj_btn.UseVisualStyleBackColor = true;
 			this.opakuj_btn.Click += new System.EventHandler(this.Opakuj_btnClick);
 			// 
@@ -145,7 +147,7 @@ namespace Edusoft2
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(216, 64);
 			this.label2.TabIndex = 9;
-			this.label2.Text = "label2";			
+			this.label2.Text = "label2";
 			// 
 			// label3
 			// 
@@ -175,11 +177,23 @@ namespace Edusoft2
 			this.predchadzajuca_btn.UseVisualStyleBackColor = true;
 			this.predchadzajuca_btn.Click += new System.EventHandler(this.Predchadzajuca_btnClick);
 			// 
+			// znova_btn
+			// 
+			this.znova_btn.Enabled = false;
+			this.znova_btn.Location = new System.Drawing.Point(1280, 1056);
+			this.znova_btn.Name = "znova_btn";
+			this.znova_btn.Size = new System.Drawing.Size(112, 72);
+			this.znova_btn.TabIndex = 13;
+			this.znova_btn.Text = "Znova";
+			this.znova_btn.UseVisualStyleBackColor = true;
+			this.znova_btn.Click += new System.EventHandler(this.Znova_btnClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1526, 1209);
+			this.Controls.Add(this.znova_btn);
 			this.Controls.Add(this.predchadzajuca_btn);
 			this.Controls.Add(this.nasledujuca_btn);
 			this.Controls.Add(this.label3);

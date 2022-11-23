@@ -12,8 +12,8 @@ namespace Edusoft2
 		static int[,] playground;
 		Player player;		
 		int aktual_uloha =1; 
-		int pocet_uloh = 1;
-		int vyriesene_ulohy = 0; 
+		int pocet_uloh = 1;		
+		HashSet<int> completedLevels = new HashSet<int>();
 		public MainForm()
 		{			
 			InitializeComponent();												
@@ -48,7 +48,7 @@ namespace Edusoft2
 			label1.Text = r.ReadLine();
 			pocet_uloh = Directory.GetFiles(System.Environment.CurrentDirectory + "\\mapy\\sada1", "*", SearchOption.AllDirectories).Length;
 			label2.Text = "úloha " + aktual_uloha.ToString() + " z " + pocet_uloh.ToString();
-			label3.Text = "vyriešené úlohy: " + vyriesene_ulohy; 
+			label3.Text = "vyriešené úlohy: " + completedLevels.Count;
 			int size = Int32.Parse(r.ReadLine().Trim().Split(' ')[0]);
 			playground = new int[size, size];
 			string[] player_pos = r.ReadLine().Trim().Split(' ');
@@ -84,7 +84,7 @@ namespace Edusoft2
 		}
 		void Opakuj_btnClick(object sender, EventArgs e)
 		{
-			cmd.AppendText("Opakuj 1 krat");
+			cmd.AppendText("Opakuj 2 krat");
 			cmd.AppendText(Environment.NewLine);	
 			label1.Text = playground.Length.ToString(); 
 		}
@@ -144,7 +144,26 @@ namespace Edusoft2
 					player.turn_right();
 			}
 					
-			Invalidate();			
+			Invalidate();
+			if (isLevelCompleted()) {
+				completedLevels.Add(aktual_uloha); 
+				MessageBox.Show("Správne riešenie!");
+				if (aktual_uloha < pocet_uloh) 
+					aktual_uloha++; 
+				loadPlayground();
+				cmd.Text = ""; 
+			}
+			else {
+				vykonaj_btn.Enabled = false;
+				znova_btn.Enabled = true; 
+			}
+		}
+		
+		void Znova_btnClick(object sender, EventArgs e)
+		{
+			vykonaj_btn.Enabled = true;
+			znova_btn.Enabled = false; 
+			loadPlayground(); 
 		}
 		
 		void Predchadzajuca_btnClick(object sender, EventArgs e)
@@ -161,6 +180,16 @@ namespace Edusoft2
 				loadPlayground();
 			}			 
 		}
+		
+		public bool isLevelCompleted() {
+			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
+				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
+				    	if (playground[i, j] == 1)
+						return false; 					
+				}
+			}
+			return true; 
+		}		
 		
 		
 		

@@ -14,3 +14,11 @@ C:\Users\matia\OneDrive\Dokumenty\skola\SPV\EduSoft2\obj\Debug\Edusoft2.MainForm
 C:\Users\matia\OneDrive\Dokumenty\skola\SPV\EduSoft2\obj\Debug\Edusoft2.csproj.GenerateResource.Cache
 C:\Users\matia\OneDrive\Dokumenty\skola\SPV\EduSoft2\obj\Debug\Edusoft2.exe
 C:\Users\matia\OneDrive\Dokumenty\skola\SPV\EduSoft2\obj\Debug\Edusoft2.pdb
+C:\Users\patri\Desktop\edu\edu 2\EduSoft2\bin\Debug\Edusoft2.exe.config
+C:\Users\patri\Desktop\edu\edu 2\EduSoft2\bin\Debug\Edusoft2.exe
+C:\Users\patri\Desktop\edu\edu 2\EduSoft2\bin\Debug\Edusoft2.pdb
+C:\Users\patri\Desktop\edu\edu 2\EduSoft2\obj\Debug\Edusoft2.csprojResolveAssemblyReference.cache
+C:\Users\patri\Desktop\edu\edu 2\EduSoft2\obj\Debug\Edusoft2.MainForm.resources
+C:\Users\patri\Desktop\edu\edu 2\EduSoft2\obj\Debug\Edusoft2.csproj.GenerateResource.Cache
+C:\Users\patri\Desktop\edu\edu 2\EduSoft2\obj\Debug\Edusoft2.exe
+C:\Users\patri\Desktop\edu\edu 2\EduSoft2\obj\Debug\Edusoft2.pdb

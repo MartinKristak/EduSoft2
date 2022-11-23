@@ -8,21 +8,29 @@ namespace Edusoft2
 {	
 	public partial class MainForm : Form	
 	{		
-		int playground_size = 240;		
+		int playground_size = 550;		
 		static int[,] playground;
 		Player player;		
 		int aktual_uloha =1; 
 		int pocet_uloh = 1;		
 		HashSet<int> completedLevels = new HashSet<int>();
+		Graphics g;
 		public MainForm()
 		{			
-			InitializeComponent();												
+			
+			InitializeComponent();	
+			
+			KeyPreview = true;
+			//this.FormBorderStyle = FormBorderStyle.None;
+    		//this.WindowState = FormWindowState.Maximized;
+			g = panel1.CreateGraphics();    		
 			loadPlayground(); 
 		}
 		
 		protected override void OnPaint(PaintEventArgs e) {
+			playground_size = Math.Min(panel1.Width, panel1.Height) - 150;
 			int cell_size = playground_size / Convert.ToInt32(Math.Sqrt(playground.Length));
-			Graphics g = CreateGraphics();
+			
 			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
 				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
 			    		if (playground[i, j] == 0) {
@@ -41,6 +49,7 @@ namespace Edusoft2
 			    	}	    				
 			}
 		}
+		
 		
 		void loadPlayground() {
 			string path = "mapy/sada1/" + aktual_uloha.ToString() + ".txt";
@@ -189,10 +198,20 @@ namespace Edusoft2
 				}
 			}
 			return true; 
-		}		
+		}
+		void MainFormKeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape){
+				//MessageBox.Show("Enter Key Pressed ");
+				Application.Exit( );
+			}
+		}
+		void MainFormLoad(object sender, EventArgs e)
+		{
+	
+		}
 		
-		
-		
+
 		
 		class Player {
 			int pos_x; 

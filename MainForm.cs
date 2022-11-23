@@ -21,8 +21,8 @@ namespace Edusoft2
 			InitializeComponent();	
 			
 			KeyPreview = true;
-			//this.FormBorderStyle = FormBorderStyle.None;
-    		//this.WindowState = FormWindowState.Maximized;
+			this.FormBorderStyle = FormBorderStyle.None;
+    		this.WindowState = FormWindowState.Maximized;
 			g = panel1.CreateGraphics();    		
 			loadPlayground(); 
 		}
@@ -205,10 +205,6 @@ namespace Edusoft2
 				//MessageBox.Show("Enter Key Pressed ");
 				Application.Exit( );
 			}
-		}
-		void MainFormLoad(object sender, EventArgs e)
-		{
-	
 		}
 		
 

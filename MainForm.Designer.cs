@@ -32,6 +32,7 @@ namespace Edusoft2
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.SplitContainer splitContainer1;
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.ToolTip toolTip1;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -54,6 +55,7 @@ namespace Edusoft2
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.vlavo_btn = new System.Windows.Forms.Button();
 			this.vpravo_btn = new System.Windows.Forms.Button();
 			this.vpred_btn = new System.Windows.Forms.Button();
@@ -72,6 +74,7 @@ namespace Edusoft2
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.panel2.SuspendLayout();
 			this.panel4.SuspendLayout();
 			this.panel3.SuspendLayout();
@@ -90,6 +93,7 @@ namespace Edusoft2
 			this.vlavo_btn.Size = new System.Drawing.Size(104, 80);
 			this.vlavo_btn.TabIndex = 0;
 			this.vlavo_btn.Text = "Otoč vľavo";
+			this.toolTip1.SetToolTip(this.vlavo_btn, "Otoč vľavo");
 			this.vlavo_btn.UseVisualStyleBackColor = true;
 			this.vlavo_btn.Click += new System.EventHandler(this.Vlavo_btnClick);
 			// 
@@ -102,6 +106,7 @@ namespace Edusoft2
 			this.vpravo_btn.Size = new System.Drawing.Size(104, 80);
 			this.vpravo_btn.TabIndex = 1;
 			this.vpravo_btn.Text = "Otoč vpravo";
+			this.toolTip1.SetToolTip(this.vpravo_btn, "Otoč vpravo");
 			this.vpravo_btn.UseVisualStyleBackColor = true;
 			this.vpravo_btn.Click += new System.EventHandler(this.Vpravo_btnClick);
 			// 
@@ -114,6 +119,7 @@ namespace Edusoft2
 			this.vpred_btn.Size = new System.Drawing.Size(104, 80);
 			this.vpred_btn.TabIndex = 2;
 			this.vpred_btn.Text = "Vpred";
+			this.toolTip1.SetToolTip(this.vpred_btn, "Vpred");
 			this.vpred_btn.UseVisualStyleBackColor = true;
 			this.vpred_btn.Click += new System.EventHandler(this.Vpred_btnClick);
 			// 
@@ -126,6 +132,7 @@ namespace Edusoft2
 			this.opakuj_btn.Size = new System.Drawing.Size(104, 80);
 			this.opakuj_btn.TabIndex = 3;
 			this.opakuj_btn.Text = "Opakuj 2 krat";
+			this.toolTip1.SetToolTip(this.opakuj_btn, "Opakuj 2 krát");
 			this.opakuj_btn.UseVisualStyleBackColor = true;
 			this.opakuj_btn.Click += new System.EventHandler(this.Opakuj_btnClick);
 			// 
@@ -138,6 +145,7 @@ namespace Edusoft2
 			this.koniecOpak_btn.Size = new System.Drawing.Size(104, 80);
 			this.koniecOpak_btn.TabIndex = 4;
 			this.koniecOpak_btn.Text = "Koniec opakovania";
+			this.toolTip1.SetToolTip(this.koniecOpak_btn, "Koniec opakovania");
 			this.koniecOpak_btn.UseVisualStyleBackColor = true;
 			this.koniecOpak_btn.Click += new System.EventHandler(this.KoniecOpak_btnClick);
 			// 
@@ -166,17 +174,18 @@ namespace Edusoft2
 			this.vykonaj_btn.Size = new System.Drawing.Size(344, 100);
 			this.vykonaj_btn.TabIndex = 7;
 			this.vykonaj_btn.Text = "Vykonaj príkazy";
+			this.toolTip1.SetToolTip(this.vykonaj_btn, "Vykonaj príkazy");
 			this.vykonaj_btn.UseVisualStyleBackColor = true;
 			this.vykonaj_btn.Click += new System.EventHandler(this.Vykonaj_btnClick);
 			// 
 			// label1
 			// 
 			this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.label1.Location = new System.Drawing.Point(-44, 0);
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.label1.Location = new System.Drawing.Point(0, 0);
 			this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(824, 88);
+			this.label1.Size = new System.Drawing.Size(736, 88);
 			this.label1.TabIndex = 8;
 			this.label1.Text = "label1";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -184,7 +193,7 @@ namespace Edusoft2
 			// label2
 			// 
 			this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.label2.Location = new System.Drawing.Point(100, 88);
 			this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label2.Name = "label2";
@@ -196,7 +205,7 @@ namespace Edusoft2
 			// label3
 			// 
 			this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.label3.Location = new System.Drawing.Point(100, 144);
 			this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label3.Name = "label3";
@@ -215,6 +224,7 @@ namespace Edusoft2
 			this.nasledujuca_btn.Size = new System.Drawing.Size(208, 128);
 			this.nasledujuca_btn.TabIndex = 11;
 			this.nasledujuca_btn.Text = "Nasledujúca úloha";
+			this.toolTip1.SetToolTip(this.nasledujuca_btn, "Nasledujúca úloha");
 			this.nasledujuca_btn.UseVisualStyleBackColor = true;
 			this.nasledujuca_btn.Click += new System.EventHandler(this.Nasledujuca_btnClick);
 			// 
@@ -228,6 +238,7 @@ namespace Edusoft2
 			this.predchadzajuca_btn.Size = new System.Drawing.Size(208, 128);
 			this.predchadzajuca_btn.TabIndex = 12;
 			this.predchadzajuca_btn.Text = "Predchádzajúca úloha";
+			this.toolTip1.SetToolTip(this.predchadzajuca_btn, "Predchadzajúca úloha");
 			this.predchadzajuca_btn.UseVisualStyleBackColor = true;
 			this.predchadzajuca_btn.Click += new System.EventHandler(this.Predchadzajuca_btnClick);
 			// 
@@ -242,6 +253,7 @@ namespace Edusoft2
 			this.znova_btn.Size = new System.Drawing.Size(168, 100);
 			this.znova_btn.TabIndex = 13;
 			this.znova_btn.Text = "Znova";
+			this.toolTip1.SetToolTip(this.znova_btn, "Znovu");
 			this.znova_btn.UseVisualStyleBackColor = true;
 			this.znova_btn.Click += new System.EventHandler(this.Znova_btnClick);
 			// 
@@ -330,7 +342,6 @@ namespace Edusoft2
 			this.MinimumSize = new System.Drawing.Size(800, 600);
 			this.Name = "MainForm";
 			this.Text = "EduSoft2 - zbieranie mincí";
-			this.Load += new System.EventHandler(this.MainFormLoad);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainFormKeyDown);
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();

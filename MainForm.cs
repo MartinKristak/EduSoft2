@@ -14,38 +14,19 @@ namespace Edusoft2
 		int aktual_uloha =1; 
 		int pocet_uloh = 1;		
 		HashSet<int> completedLevels = new HashSet<int>();
-		Graphics g;
+		
 		public MainForm()
 		{			
 			
 			InitializeComponent();	
 			KeyPreview = true;
 			this.FormBorderStyle = FormBorderStyle.None;
-    		this.WindowState = FormWindowState.Maximized;    		
+    		this.WindowState = FormWindowState.Maximized;      		
 			loadPlayground(); 
 		}
 		
 		protected override void OnPaint(PaintEventArgs e) {
-			g = panel1.CreateGraphics();
-			playground_size = Math.Min(panel1.Width, panel1.Height);
-			int cell_size = playground_size / Convert.ToInt32(Math.Sqrt(playground.Length));
 			
-			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
-				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
-						g.FillRectangle(Brushes.White, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
-				    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);
-			    	if (playground[i, j] == 0) {
-			    		//pass		    		
-			    	}
-			    	else if (playground[i, j] == 1) {		    		
-			    		g.FillEllipse(Brushes.Yellow, j*cell_size+cell_size/4, i*cell_size+cell_size/4, cell_size/2, cell_size/2); 	    						    				
-			    	}
-			    	else if (playground[i, j] == 2) {
-			    		g.FillRectangle(Brushes.Blue, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
-				    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    					    			
-			    	}
-			    }	    				
-			}
 		}
 		
 		
@@ -202,6 +183,29 @@ namespace Edusoft2
 			if (e.KeyCode == Keys.Escape){
 				//MessageBox.Show("Enter Key Pressed ");
 				Application.Exit( );
+			}
+		}
+		void Panel1Paint(object sender, PaintEventArgs e)
+		{
+			Graphics g = e.Graphics;
+			playground_size = Math.Min(panel1.Width, panel1.Height);
+			int cell_size = playground_size / Convert.ToInt32(Math.Sqrt(playground.Length));
+			
+			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
+				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
+						g.FillRectangle(Brushes.White, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
+				    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);
+			    	if (playground[i, j] == 0) {
+			    		//pass		    		
+			    	}
+			    	else if (playground[i, j] == 1) {		    		
+			    		g.FillEllipse(Brushes.Yellow, j*cell_size+cell_size/4, i*cell_size+cell_size/4, cell_size/2, cell_size/2); 	    						    				
+			    	}
+			    	else if (playground[i, j] == 2) {
+			    		g.FillRectangle(Brushes.Blue, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
+				    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    					    			
+			    	}
+			    }	    				
 			}
 		}
 		

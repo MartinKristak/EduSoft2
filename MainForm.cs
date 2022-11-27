@@ -52,7 +52,7 @@ namespace Edusoft2
 			}
 			r.Close();
 			player = new Player();			
-			Invalidate(); 
+			panel1.Invalidate(); 
 		}
 		
 		void Vlavo_btnClick(object sender, EventArgs e)
@@ -73,8 +73,7 @@ namespace Edusoft2
 		void Opakuj_btnClick(object sender, EventArgs e)
 		{
 			cmd.AppendText("Opakuj 2 krat");
-			cmd.AppendText(Environment.NewLine);	
-			label1.Text = playground.Length.ToString(); 
+			cmd.AppendText(Environment.NewLine);				 
 		}
 		void KoniecOpak_btnClick(object sender, EventArgs e)
 		{
@@ -122,8 +121,7 @@ namespace Edusoft2
 				}					
 					
 			}
-			foreach (string command in commands) {
-				label1.Text += command; 
+			foreach (string command in commands) {				 
 				if (command.Equals("Vpred")) 							
 					player.move();
 				if (command.Equals("Vlavo")) 
@@ -132,7 +130,7 @@ namespace Edusoft2
 					player.turn_right();
 			}
 					
-			Invalidate();
+			panel1.Invalidate();
 			if (isLevelCompleted()) {
 				completedLevels.Add(aktual_uloha); 
 				MessageBox.Show("Správne riešenie!");

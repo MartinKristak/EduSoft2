@@ -85,7 +85,7 @@ namespace Edusoft2
 			}
 			r.Close();
 			player = new Player();			
-			Invalidate(); 
+			panel1.Invalidate(); 
 		}
 		
 		void Vlavo_btnClick(object sender, EventArgs e)
@@ -106,8 +106,7 @@ namespace Edusoft2
 		void Opakuj_btnClick(object sender, EventArgs e)
 		{
 			cmd.AppendText("Opakuj 2 krat");
-			cmd.AppendText(Environment.NewLine);	
-			label1.Text = playground.Length.ToString(); 
+			cmd.AppendText(Environment.NewLine);				 
 		}
 		void KoniecOpak_btnClick(object sender, EventArgs e)
 		{
@@ -122,26 +121,26 @@ namespace Edusoft2
 			List<string> repeat_commands = new List<string>();			
 			int repeat_num = 1; 
 			for (int i = 0; i<commandList.Length; i++) {								
-				String command = commandList[i].Trim();								
-				if (command.Equals("Vpred")) {								
+				String command = commandList[i].Trim().ToLower();
+				if (command.Equals("vpred")) {								
 					if (repeat_num == 1)
 						commands.Add(command);
 					else 
 						repeat_commands.Add(command);
 				}
-				if (command.Equals("Vlavo")) {								
+				if (command.Equals("vlavo")) {								
 					if (repeat_num == 1)				
 						commands.Add(command);
 					else 
 						repeat_commands.Add(command);
 				}
-				if (command.Equals("Vpravo")) {
+				if (command.Equals("vpravo")) {
 					if (repeat_num == 1)				
 						commands.Add(command);
 					else 
 						repeat_commands.Add(command);
 				}
-				if (command.Equals("Koniec opakovania")) {
+				if (command.Equals("koniec opakovania")) {
 					for (int x = 0; x<repeat_num; x++) {
 						foreach (string comm in repeat_commands)
 							commands.Add(comm); 
@@ -149,23 +148,22 @@ namespace Edusoft2
 					repeat_num = 1; 
 					repeat_commands = new List<String>(); 
 				}
-				if (command.Length > 8 && command.Substring(0, 6).Equals("Opakuj") && command.IndexOf("krat") > 0) {
+				if (command.Length > 8 && command.Substring(0, 6).Equals("opakuj") && command.IndexOf("krat") > 0) {
 					string number_string = command.Substring(command.IndexOf(' ')).Trim();
 					repeat_num = Int32.Parse(number_string = number_string.Substring(0, number_string.IndexOf(' ')));					
 				}					
 					
 			}
-			foreach (string command in commands) {
-				label1.Text += command; 
-				if (command.Equals("Vpred")) 							
+			foreach (string command in commands) {				 
+				if (command.Equals("vpred")) 							
 					player.move();
-				if (command.Equals("Vlavo")) 
+				if (command.Equals("vlavo")) 
 					player.turn_left(); 
-				if (command.Equals("Vpravo")) 
+				if (command.Equals("vpravo")) 
 					player.turn_right();
 			}
 					
-			Invalidate();
+			panel1.Invalidate();
 			if (isLevelCompleted()) {
 				completedLevels.Add(aktual_uloha); 
 				MessageBox.Show("Správne riešenie!");

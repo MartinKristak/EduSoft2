@@ -14,7 +14,7 @@ namespace Edusoft2
 		int aktual_uloha =1; 
 		int pocet_uloh = 1;		
 		HashSet<int> completedLevels = new HashSet<int>();
-		
+		Boolean hraci = true;
 		public MainForm()
 		{			
 			
@@ -25,8 +25,41 @@ namespace Edusoft2
 			loadPlayground(); 
 		}
 		
-		protected override void OnPaint(PaintEventArgs e) {
+		void Button1Click(object sender, EventArgs e)//hraci rezim
+		{
+			if(hraci) return;
+			Reverse();
+		}
+		void Button2Click(object sender, EventArgs e)//testovaci rezim
+		{
+			if(!hraci) return;
+			Reverse();
+		}
+		
+		void Reverse(){
+			hraci = !hraci;
 			
+			button2.Enabled = !button2.Enabled;
+			button1.Enabled = !button1.Enabled;
+			
+			button3.Visible = !button3.Visible;
+			button4.Visible = !button4.Visible;
+			button5.Visible = !button5.Visible;
+			
+			panel3.Visible = !panel3.Visible;
+			panel5.Visible = !panel5.Visible;
+			panel6.Visible = !panel6.Visible;
+			cmd.Visible = !cmd.Visible;
+		}
+		
+		void TrackBar1ValueChanged(object sender, EventArgs e)
+		{
+			int value = trackBar1.Value;
+			label4.Text = "Veľkosť poľa:\n" + value + "X" + value;
+		}
+		
+		protected override void OnPaint(PaintEventArgs e) {
+			panel1.Invalidate();
 		}
 		
 		
@@ -206,7 +239,6 @@ namespace Edusoft2
 			    }	    				
 			}
 		}
-		
 
 		
 		class Player {

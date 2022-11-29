@@ -33,6 +33,15 @@ namespace Edusoft2
 		private System.Windows.Forms.SplitContainer splitContainer1;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.ToolTip toolTip1;
+		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button button5;
+		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Panel panel5;
+		private System.Windows.Forms.Panel panel6;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.TrackBar trackBar1;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -71,12 +80,24 @@ namespace Edusoft2
 			this.znova_btn = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.panel4 = new System.Windows.Forms.Panel();
+			this.panel6 = new System.Windows.Forms.Panel();
+			this.label4 = new System.Windows.Forms.Label();
+			this.trackBar1 = new System.Windows.Forms.TrackBar();
+			this.panel5 = new System.Windows.Forms.Panel();
+			this.button5 = new System.Windows.Forms.Button();
+			this.button4 = new System.Windows.Forms.Button();
+			this.button3 = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.panel2.SuspendLayout();
 			this.panel4.SuspendLayout();
+			this.panel6.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+			this.panel5.SuspendLayout();
 			this.panel3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -126,7 +147,7 @@ namespace Edusoft2
 			// opakuj_btn
 			// 
 			this.opakuj_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.opakuj_btn.Location = new System.Drawing.Point(312, 128);
+			this.opakuj_btn.Location = new System.Drawing.Point(208, 96);
 			this.opakuj_btn.Margin = new System.Windows.Forms.Padding(2);
 			this.opakuj_btn.Name = "opakuj_btn";
 			this.opakuj_btn.Size = new System.Drawing.Size(104, 80);
@@ -139,7 +160,7 @@ namespace Edusoft2
 			// koniecOpak_btn
 			// 
 			this.koniecOpak_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.koniecOpak_btn.Location = new System.Drawing.Point(208, 128);
+			this.koniecOpak_btn.Location = new System.Drawing.Point(312, 96);
 			this.koniecOpak_btn.Margin = new System.Windows.Forms.Padding(2);
 			this.koniecOpak_btn.Name = "koniecOpak_btn";
 			this.koniecOpak_btn.Size = new System.Drawing.Size(104, 80);
@@ -156,12 +177,12 @@ namespace Edusoft2
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.cmd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(225)))), ((int)(((byte)(205)))));
 			this.cmd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.cmd.Location = new System.Drawing.Point(0, 232);
+			this.cmd.Location = new System.Drawing.Point(0, 352);
 			this.cmd.Margin = new System.Windows.Forms.Padding(2);
 			this.cmd.Multiline = true;
 			this.cmd.Name = "cmd";
 			this.cmd.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.cmd.Size = new System.Drawing.Size(552, 504);
+			this.cmd.Size = new System.Drawing.Size(552, 384);
 			this.cmd.TabIndex = 6;
 			// 
 			// vykonaj_btn
@@ -271,16 +292,110 @@ namespace Edusoft2
 			// 
 			// panel4
 			// 
-			this.panel4.Controls.Add(this.vlavo_btn);
-			this.panel4.Controls.Add(this.vpravo_btn);
-			this.panel4.Controls.Add(this.opakuj_btn);
-			this.panel4.Controls.Add(this.koniecOpak_btn);
-			this.panel4.Controls.Add(this.vpred_btn);
+			this.panel4.Controls.Add(this.panel6);
+			this.panel4.Controls.Add(this.panel5);
+			this.panel4.Controls.Add(this.button5);
+			this.panel4.Controls.Add(this.button4);
+			this.panel4.Controls.Add(this.button3);
+			this.panel4.Controls.Add(this.button2);
+			this.panel4.Controls.Add(this.button1);
 			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel4.Location = new System.Drawing.Point(0, 0);
 			this.panel4.Name = "panel4";
-			this.panel4.Size = new System.Drawing.Size(551, 232);
+			this.panel4.Size = new System.Drawing.Size(551, 352);
 			this.panel4.TabIndex = 16;
+			// 
+			// panel6
+			// 
+			this.panel6.Controls.Add(this.label4);
+			this.panel6.Controls.Add(this.trackBar1);
+			this.panel6.Location = new System.Drawing.Point(8, 88);
+			this.panel6.Name = "panel6";
+			this.panel6.Size = new System.Drawing.Size(536, 248);
+			this.panel6.TabIndex = 2;
+			this.panel6.Visible = false;
+			// 
+			// label4
+			// 
+			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.label4.Location = new System.Drawing.Point(8, 104);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(520, 88);
+			this.label4.TabIndex = 1;
+			this.label4.Text = "Veľkosť poľa:\r\n3X3";
+			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// trackBar1
+			// 
+			this.trackBar1.Location = new System.Drawing.Point(8, 40);
+			this.trackBar1.Minimum = 3;
+			this.trackBar1.Name = "trackBar1";
+			this.trackBar1.Size = new System.Drawing.Size(520, 56);
+			this.trackBar1.TabIndex = 0;
+			this.trackBar1.Value = 3;
+			this.trackBar1.ValueChanged += new System.EventHandler(this.TrackBar1ValueChanged);
+			// 
+			// panel5
+			// 
+			this.panel5.Controls.Add(this.vlavo_btn);
+			this.panel5.Controls.Add(this.vpred_btn);
+			this.panel5.Controls.Add(this.vpravo_btn);
+			this.panel5.Controls.Add(this.koniecOpak_btn);
+			this.panel5.Controls.Add(this.opakuj_btn);
+			this.panel5.Location = new System.Drawing.Point(8, 96);
+			this.panel5.Name = "panel5";
+			this.panel5.Size = new System.Drawing.Size(536, 248);
+			this.panel5.TabIndex = 10;
+			// 
+			// button5
+			// 
+			this.button5.Location = new System.Drawing.Point(216, 8);
+			this.button5.Name = "button5";
+			this.button5.Size = new System.Drawing.Size(104, 80);
+			this.button5.TabIndex = 9;
+			this.button5.Text = "Načítať v hre";
+			this.button5.UseVisualStyleBackColor = true;
+			// 
+			// button4
+			// 
+			this.button4.Location = new System.Drawing.Point(320, 8);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(104, 80);
+			this.button4.TabIndex = 8;
+			this.button4.Text = "Uložiť";
+			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Visible = false;
+			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(216, 8);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(104, 80);
+			this.button3.TabIndex = 7;
+			this.button3.Text = "Načítať";
+			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Visible = false;
+			// 
+			// button2
+			// 
+			this.button2.Location = new System.Drawing.Point(112, 8);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(104, 80);
+			this.button2.TabIndex = 6;
+			this.button2.Text = "Testovací";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.Button2Click);
+			// 
+			// button1
+			// 
+			this.button1.Enabled = false;
+			this.button1.Location = new System.Drawing.Point(8, 8);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(104, 80);
+			this.button1.TabIndex = 5;
+			this.button1.Text = "Hrací";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.Button1Click);
 			// 
 			// panel3
 			// 
@@ -345,6 +460,10 @@ namespace Edusoft2
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
 			this.panel4.ResumeLayout(false);
+			this.panel6.ResumeLayout(false);
+			this.panel6.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+			this.panel5.ResumeLayout(false);
 			this.panel3.ResumeLayout(false);
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);

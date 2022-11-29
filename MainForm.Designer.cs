@@ -385,6 +385,9 @@ namespace Edusoft2
 			this.button2.Text = "Testovací";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.Button2Click);
+			this.button3.Click += new System.EventHandler(this.Button3Click);
+			this.button4.Click += new System.EventHandler(this.Button4Click);
+			this.button5.Click += new System.EventHandler(this.Button5Click);
 			// 
 			// button1
 			// 

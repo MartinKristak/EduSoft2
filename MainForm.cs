@@ -13,6 +13,7 @@ namespace Edusoft2
 		Player player;		
 		int aktual_uloha =1; 
 		int pocet_uloh = 1;		
+		string sada_uloh = "sada1"; 
 		HashSet<int> completedLevels = new HashSet<int>();
 		Boolean hraci = true;
 		public MainForm()
@@ -21,7 +22,7 @@ namespace Edusoft2
 			InitializeComponent();	
 			KeyPreview = true;
 			this.FormBorderStyle = FormBorderStyle.None;
-    		this.WindowState = FormWindowState.Maximized;      		
+    			this.WindowState = FormWindowState.Maximized;      		
 			loadPlayground(); 
 		}
 		
@@ -34,6 +35,34 @@ namespace Edusoft2
 		{
 			if(!hraci) return;
 			Reverse();
+		}		
+		
+		void Button3Click(object sender, EventArgs e) {
+			
+		}
+		
+		void Button4Click(object sender, EventArgs e) {			
+					
+		}
+		
+		void Button5Click(object sender, EventArgs e) {
+			var fileContent = string.Empty;
+			var filePath = string.Empty;
+			
+			using (OpenFileDialog openFileDialog = new OpenFileDialog())
+			{
+			    openFileDialog.InitialDirectory = "c:\\";
+			    openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+			    openFileDialog.FilterIndex = 2;
+			    openFileDialog.RestoreDirectory = true;
+			
+			    if (openFileDialog.ShowDialog() == DialogResult.OK)
+			    {
+			        //Get the path of specified file
+			        filePath = openFileDialog.FileName;
+			        loadPlayground(filePath); 
+			    }
+			}
 		}
 		
 		void Reverse(){
@@ -63,11 +92,19 @@ namespace Edusoft2
 		}
 		
 		
-		void loadPlayground() {
-			string path = "mapy/sada1/" + aktual_uloha.ToString() + ".txt";
+		void loadPlayground(string file_path = "") {
+			string path; 
+			if (file_path == "") 
+				path = "mapy/" + sada_uloh + "/" + aktual_uloha.ToString() + ".txt";
+			else {
+				path = file_path;
+				completedLevels = new HashSet<int>();								
+			}				
 			StreamReader r = new StreamReader(path);			
-			label1.Text = r.ReadLine();
-			pocet_uloh = Directory.GetFiles(System.Environment.CurrentDirectory + "\\mapy\\sada1", "*", SearchOption.AllDirectories).Length;
+			sada_uloh = r.ReadLine().Trim();
+			label1.Text = sada_uloh;
+			aktual_uloha = Int32.Parse(Path.GetFileNameWithoutExtension(path));
+			pocet_uloh = Directory.GetFiles(System.Environment.CurrentDirectory + "\\mapy\\" + sada_uloh, "*", SearchOption.AllDirectories).Length;
 			label2.Text = "úloha " + aktual_uloha.ToString() + " z " + pocet_uloh.ToString();
 			label3.Text = "vyriešené úlohy: " + completedLevels.Count;
 			int size = Int32.Parse(r.ReadLine().Trim().Split(' ')[0]);

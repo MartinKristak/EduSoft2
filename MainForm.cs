@@ -67,6 +67,13 @@ namespace Edusoft2
 		
 		void Reverse(){
 			hraci = !hraci;
+			if (hraci) {
+				loadPlayground(); 
+			}
+			else {
+				playground = new int[8, 8];
+				panel1.Invalidate(); 
+			}
 			
 			button2.Enabled = !button2.Enabled;
 			button1.Enabled = !button1.Enabled;
@@ -79,6 +86,11 @@ namespace Edusoft2
 			panel5.Visible = !panel5.Visible;
 			panel6.Visible = !panel6.Visible;
 			cmd.Visible = !cmd.Visible;
+			predchadzajuca_btn.Visible = !predchadzajuca_btn.Visible;
+			nasledujuca_btn.Visible = !nasledujuca_btn.Visible; 
+			label1.Visible = !label1.Visible;
+			label2.Visible = !label2.Visible;
+			label3.Visible = !label3.Visible;
 		}
 		
 		void TrackBar1ValueChanged(object sender, EventArgs e)
@@ -192,8 +204,17 @@ namespace Edusoft2
 					
 			}
 			foreach (string command in commands) {				 
-				if (command.Equals("vpred")) 							
-					player.move();
+				if (command.Equals("vpred")) {
+					try
+					{
+						player.move();
+					}
+					catch
+					{
+						break;
+						MessageBox.Show("Počas vykonávania príkazov hráč vyšiel z hracej plochy!");
+					}
+				}					
 				if (command.Equals("vlavo")) 
 					player.turn_left(); 
 				if (command.Equals("vpravo")) 
@@ -334,7 +355,7 @@ namespace Edusoft2
 					pos_y++; 
 					playground[pos_y, pos_x] = 2;					
 				}
-				if (turned_to == 3) {
+				if (turned_to == 3) {					
 					playground[pos_y, pos_x] = 0;
 					pos_x--; 
 					playground[pos_y, pos_x] = 2;					

@@ -273,7 +273,13 @@ namespace Edusoft2
 				//MessageBox.Show("Enter Key Pressed ");
 				Application.Exit( );
 			}
+		}		
+		
+		void Panel1MouseClick(Object sender, MouseEventArgs e) {
+			//label1.Text = e.X + " " + e.Y; 
 		}
+
+		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
 			Graphics g = e.Graphics;

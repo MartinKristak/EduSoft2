@@ -446,6 +446,7 @@ namespace Edusoft2
 			this.panel1.Size = new System.Drawing.Size(736, 648);
 			this.panel1.TabIndex = 0;
 			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1Paint);
+			this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseClick);
 			// 
 			// MainForm
 			// 

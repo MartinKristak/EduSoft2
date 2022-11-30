@@ -8,7 +8,8 @@ namespace Edusoft2
 {	
 	public partial class MainForm : Form	
 	{		
-		int playground_size = 550;		
+		//int playground_size = 550;		
+		int cell_size = 70; 
 		static int[,] playground;
 		Player player;		
 		int aktual_uloha =1; 
@@ -211,8 +212,8 @@ namespace Edusoft2
 					}
 					catch
 					{
-						break;
 						MessageBox.Show("Počas vykonávania príkazov hráč vyšiel z hracej plochy!");
+						break;						
 					}
 				}					
 				if (command.Equals("vlavo")) 
@@ -267,6 +268,20 @@ namespace Edusoft2
 			}
 			return true; 
 		}
+		
+		public bool isPlayerOnPlayground() {
+			int pocet = 0; 
+			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
+				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
+				    	if (playground[i, j] == 2) 
+				    		pocet++; 
+				}
+			}
+			if (pocet == 2)
+				return true; 
+			return false; 
+		}
+		
 		void MainFormKeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Escape){
@@ -276,16 +291,27 @@ namespace Edusoft2
 		}		
 		
 		void Panel1MouseClick(Object sender, MouseEventArgs e) {
-			//label1.Text = e.X + " " + e.Y; 
+			if (!hraci) {				 
+				int x = e.X / cell_size; 
+				int y = e.Y / cell_size; 				
+				if (x < Math.Sqrt(playground.Length) && y < Math.Sqrt(playground.Length)) {
+					playground[y, x] += 1;
+					if (playground[y, x] == 2 && isPlayerOnPlayground()) 
+						playground[y, x] = 0; 
+					if (playground[y, x] == 3) 
+						playground[y, x] = 0;
+					panel1.Invalidate(); 
+				}
+ 			}
+			 
 		}
 
 		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
 			Graphics g = e.Graphics;
-			playground_size = Math.Min(panel1.Width, panel1.Height);
-			int cell_size = playground_size / Convert.ToInt32(Math.Sqrt(playground.Length));
-			
+			int playground_size = Math.Min(panel1.Width, panel1.Height);
+			//cell_size = playground_size / Convert.ToInt32(Math.Sqrt(playground.Length));			 			
 			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
 				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
 						g.FillRectangle(Brushes.White, j*cell_size, i*cell_size, cell_size, cell_size); 			    		

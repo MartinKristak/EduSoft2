@@ -38,12 +38,27 @@ namespace Edusoft2
 			Reverse();
 		}		
 		
-		void Button3Click(object sender, EventArgs e) {
+		void Button3Click(object sender, EventArgs e) {			
+			var filePath = string.Empty;
 			
+			using (OpenFileDialog openFileDialog = new OpenFileDialog())
+			{
+			    openFileDialog.InitialDirectory = "c:\\";
+			    openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+			    openFileDialog.FilterIndex = 2;
+			    openFileDialog.RestoreDirectory = true;
+			
+			    if (openFileDialog.ShowDialog() == DialogResult.OK)
+			    {
+			        //Get the path of specified file
+			        filePath = openFileDialog.FileName;
+			        loadPlayground(filePath, true); 
+			    }
+			}
 		}
 		
 		void Button4Click(object sender, EventArgs e) {			
-					
+			saveMap(); 
 		}
 		
 		void Button5Click(object sender, EventArgs e) {
@@ -105,7 +120,7 @@ namespace Edusoft2
 		}
 		
 		
-		void loadPlayground(string file_path = "") {
+		void loadPlayground(string file_path = "", bool loadMap=false) {
 			string path; 
 			if (file_path == "") 
 				path = "mapy/" + sada_uloh + "/" + aktual_uloha.ToString() + ".txt";
@@ -115,11 +130,13 @@ namespace Edusoft2
 			}				
 			StreamReader r = new StreamReader(path);			
 			sada_uloh = r.ReadLine().Trim();
-			label1.Text = sada_uloh;
-			aktual_uloha = Int32.Parse(Path.GetFileNameWithoutExtension(path));
-			pocet_uloh = Directory.GetFiles(System.Environment.CurrentDirectory + "\\mapy\\" + sada_uloh, "*", SearchOption.AllDirectories).Length;
-			label2.Text = "úloha " + aktual_uloha.ToString() + " z " + pocet_uloh.ToString();
-			label3.Text = "vyriešené úlohy: " + completedLevels.Count;
+			if (loadMap == false) {
+				label1.Text = sada_uloh;
+				aktual_uloha = Int32.Parse(Path.GetFileNameWithoutExtension(path));
+				pocet_uloh = Directory.GetFiles(System.Environment.CurrentDirectory + "\\mapy\\" + sada_uloh, "*", SearchOption.AllDirectories).Length;
+				label2.Text = "úloha " + aktual_uloha.ToString() + " z " + pocet_uloh.ToString();
+				label3.Text = "vyriešené úlohy: " + completedLevels.Count;
+			}			
 			int size = Int32.Parse(r.ReadLine().Trim().Split(' ')[0]);
 			playground = new int[size, size];
 			string[] player_pos = r.ReadLine().Trim().Split(' ');
@@ -136,6 +153,29 @@ namespace Edusoft2
 			r.Close();
 			player = new Player();			
 			panel1.Invalidate(); 
+		}
+		
+		void saveMap() {
+			if (numberPlayerOnPlayground() == 0) {
+				MessageBox.Show("Na hracej ploche sa nenachádza postava hráča. Mapu nemá zmysel ukladať!");
+				return; 
+			}
+			player = new Player(); 
+			string filename = DateTime.Now.ToString("O");			
+			filename = filename.Substring(0, filename.IndexOf("."));
+			filename = "map_" + filename.Replace(":", "_");			
+			StreamWriter w = new StreamWriter("saved_maps/" + filename + ".txt");     
+			w.WriteLine("sada1");                          
+			w.WriteLine(Math.Sqrt(playground.Length).ToString());
+			w.WriteLine(player.get_pos_y().ToString() + " " + player.get_pos_x().ToString());
+			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
+				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
+				    	if (playground[i, j] == 1) 
+				    		w.WriteLine(i.ToString() + " " + j.ToString()); 
+				}
+			}
+			w.Close();
+			MessageBox.Show("Uložená mapa: " + filename); 
 		}
 		
 		void Vlavo_btnClick(object sender, EventArgs e)
@@ -205,17 +245,8 @@ namespace Edusoft2
 					
 			}
 			foreach (string command in commands) {				 
-				if (command.Equals("vpred")) {
-					try
-					{
-						player.move();
-					}
-					catch
-					{
-						MessageBox.Show("Počas vykonávania príkazov hráč vyšiel z hracej plochy!");
-						break;						
-					}
-				}					
+				if (command.Equals("vpred")) 					
+					player.move();									
 				if (command.Equals("vlavo")) 
 					player.turn_left(); 
 				if (command.Equals("vpravo")) 
@@ -269,17 +300,15 @@ namespace Edusoft2
 			return true; 
 		}
 		
-		public bool isPlayerOnPlayground() {
+		public int numberPlayerOnPlayground() {
 			int pocet = 0; 
 			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
 				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
 				    	if (playground[i, j] == 2) 
 				    		pocet++; 
 				}
-			}
-			if (pocet == 2)
-				return true; 
-			return false; 
+			}							
+			return pocet; 
 		}
 		
 		void MainFormKeyDown(object sender, KeyEventArgs e)
@@ -296,7 +325,7 @@ namespace Edusoft2
 				int y = e.Y / cell_size; 				
 				if (x < Math.Sqrt(playground.Length) && y < Math.Sqrt(playground.Length)) {
 					playground[y, x] += 1;
-					if (playground[y, x] == 2 && isPlayerOnPlayground()) 
+					if (playground[y, x] == 2 && numberPlayerOnPlayground() == 2) 
 						playground[y, x] = 0; 
 					if (playground[y, x] == 3) 
 						playground[y, x] = 0;

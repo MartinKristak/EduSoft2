@@ -245,8 +245,15 @@ namespace Edusoft2
 					
 			}
 			foreach (string command in commands) {				 
-				if (command.Equals("vpred")) 					
-					player.move();									
+				if (command.Equals("vpred")) {
+					if (player.move() == false) {
+						panel1.Invalidate();
+						MessageBox.Show("Týmito príkazmi hráč vyšiel z hracej plochy! Skúste znova.");						 
+						vykonaj_btn.Enabled = false;
+						znova_btn.Enabled = true;
+						return; 
+					}
+				}					
 				if (command.Equals("vlavo")) 
 					player.turn_left(); 
 				if (command.Equals("vpravo")) 
@@ -400,27 +407,20 @@ namespace Edusoft2
 					this.turned_to = 0; 
 			}
 			
-			public void move() {
-				if (turned_to == 0) {
-					playground[pos_y, pos_x] = 0;
-					pos_y--; 
-					playground[pos_y, pos_x] = 2;					
-				}
-				if (turned_to == 1) {
-					playground[pos_y, pos_x] = 0;
-					pos_x++; 
-					playground[pos_y, pos_x] = 2;					
-				}
-				if (turned_to == 2) {
-					playground[pos_y, pos_x] = 0;
-					pos_y++; 
-					playground[pos_y, pos_x] = 2;					
-				}
-				if (turned_to == 3) {					
-					playground[pos_y, pos_x] = 0;
-					pos_x--; 
-					playground[pos_y, pos_x] = 2;					
-				}
+			public bool move() {
+				playground[pos_y, pos_x] = 0;
+				if (turned_to == 0) 			
+					pos_y--; 									
+				if (turned_to == 1) 					
+					pos_x++; 									
+				if (turned_to == 2) 					
+					pos_y++; 									
+				if (turned_to == 3) 
+					pos_x--; 				
+				if (pos_x < 0 || pos_y < 0 || pos_x == Math.Sqrt(playground.Length) || pos_x == Math.Sqrt(playground.Length))
+					return false; 
+				playground[pos_y, pos_x] = 2;					
+				return true; 
 			}
 		}
 			

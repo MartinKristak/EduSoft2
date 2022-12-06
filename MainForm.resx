@@ -120,6 +120,17 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="panel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEYAAABGBAMAAACDAP+3AAAABGdBTUEAALGPC/xhBQAAAAZQTFRFVZH/
+        MHz/QaQUPQAAAAlwSFlzAAAOwwAADsMBx2+oZAAAANNJREFUSMfdVQEOwyAIhB/A/z+7CQhsiY6uapYR
+        ay72iif1AtSDAJAV4vNhUswJf+AgtZmwcWySFZZJ3+ZskextucaRfSnkY8eo6l6J+Zyemi5yZsFtoH9P
+        lkTEINU5fd+xNK2I8hUrQatjKQuc/ooCu1AKBZYkqWKIJDTXWjlPFqP/jgWzFUmvlg8ne0q5Y4ErnPNR
+        99fIO3v8BWPvLPXX3Vjjncw54Z3MSXrCOxv8NfTOBn+diV/tTXDIO3frfLU3zaWt7E1Q9M7XvSlz/qU3
+        ATwAFFYXAgLX1JAAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

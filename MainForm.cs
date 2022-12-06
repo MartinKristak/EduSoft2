@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -17,10 +18,14 @@ namespace Edusoft2
 		string sada_uloh = "sada1"; 
 		HashSet<int> completedLevels = new HashSet<int>();
 		Boolean hraci = true;
+		List<Bitmap> bmp = new List<Bitmap>();
 		public MainForm()
 		{			
 			
-			InitializeComponent();	
+			InitializeComponent();
+			this.bmp.Add(new Bitmap("..\\..\\spirites\\00.png"));
+			this.bmp.Add(new Bitmap("..\\..\\spirites\\22.png"));
+			this.bmp.Add(new Bitmap("..\\..\\spirites\\33.png"));
 			KeyPreview = true;
 			this.FormBorderStyle = FormBorderStyle.None;
     			this.WindowState = FormWindowState.Maximized;      		
@@ -350,22 +355,43 @@ namespace Edusoft2
 			//cell_size = playground_size / Convert.ToInt32(Math.Sqrt(playground.Length));			 			
 			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
 				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
-						g.FillRectangle(Brushes.White, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
-				    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);
+						//g.FillRectangle(Brushes.White, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
+				    	//g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);
+				    	g.DrawImage(bmp[0], i*cell_size, j*cell_size);
 			    	if (playground[i, j] == 0) {
 			    		//pass		    		
 			    	}
 			    	else if (playground[i, j] == 1) {		    		
-			    		g.FillEllipse(Brushes.Yellow, j*cell_size+cell_size/4, i*cell_size+cell_size/4, cell_size/2, cell_size/2); 	    						    				
+			    		//g.FillEllipse(Brushes.Yellow, j*cell_size+cell_size/4, i*cell_size+cell_size/4, cell_size/2, cell_size/2); 
+						g.DrawImage(bmp[2], j*cell_size, i*cell_size);			    		
 			    	}
 			    	else if (playground[i, j] == 2) {
-			    		g.FillRectangle(Brushes.Blue, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
-				    	g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    					    			
+				    		g.DrawImage(RotateImage(bmp[1], (player.get_turned_to()+2)*90), j*cell_size, i*cell_size);
+			    		//g.FillRectangle(Brushes.Blue, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
+				    	//g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    					    			
 			    	}
 			    }	    				
 			}
 		}
-
+		
+		public static Bitmap RotateImage(Bitmap b, float angle)
+		{
+		  //create a new empty bitmap to hold rotated image
+		  Bitmap returnBitmap = new Bitmap(b.Width, b.Height);
+		  //make a graphics object from the empty bitmap
+		  using(Graphics g = Graphics.FromImage(returnBitmap)) 
+		  {
+		      //move rotation point to center of image
+		      g.TranslateTransform((float)b.Width / 2, (float)b.Height / 2);
+		      //rotate
+		      g.RotateTransform(angle);
+		      //move image back
+		      g.TranslateTransform(-(float)b.Width / 2, -(float)b.Height / 2);
+		      //draw passed in image onto graphics object
+		      g.DrawImage(b, new Point(0, 0)); 
+		  }
+		  return returnBitmap;
+		}
 		
 		class Player {
 			int pos_x; 
@@ -382,6 +408,10 @@ namespace Edusoft2
 	
 			public int get_pos_y() {
 				return pos_y; 
+			}
+			
+			public int get_turned_to() {
+				return turned_to; 
 			}
 	
 			void find_position() {

@@ -65,6 +65,7 @@ namespace Edusoft2
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.vlavo_btn = new System.Windows.Forms.Button();
 			this.vpravo_btn = new System.Windows.Forms.Button();
 			this.vpred_btn = new System.Windows.Forms.Button();
@@ -322,17 +323,18 @@ namespace Edusoft2
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(520, 88);
 			this.label4.TabIndex = 1;
-			this.label4.Text = "Veľkosť poľa:\r\n3X3";
+			this.label4.Text = "Veľkosť poľa:\r\n6X6";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// trackBar1
 			// 
+			this.trackBar1.LargeChange = 2;
 			this.trackBar1.Location = new System.Drawing.Point(8, 40);
-			this.trackBar1.Minimum = 3;
+			this.trackBar1.Minimum = 6;
 			this.trackBar1.Name = "trackBar1";
 			this.trackBar1.Size = new System.Drawing.Size(520, 56);
 			this.trackBar1.TabIndex = 0;
-			this.trackBar1.Value = 3;
+			this.trackBar1.Value = 6;
 			this.trackBar1.ValueChanged += new System.EventHandler(this.TrackBar1ValueChanged);
 			// 
 			// panel5
@@ -355,6 +357,7 @@ namespace Edusoft2
 			this.button5.TabIndex = 9;
 			this.button5.Text = "Nová sada";
 			this.button5.UseVisualStyleBackColor = true;
+			this.button5.Click += new System.EventHandler(this.Button5Click);
 			// 
 			// button4
 			// 
@@ -365,6 +368,7 @@ namespace Edusoft2
 			this.button4.Text = "Uložiť mapu";
 			this.button4.UseVisualStyleBackColor = true;
 			this.button4.Visible = false;
+			this.button4.Click += new System.EventHandler(this.Button4Click);
 			// 
 			// button3
 			// 
@@ -375,6 +379,7 @@ namespace Edusoft2
 			this.button3.Text = "Načítať mapu";
 			this.button3.UseVisualStyleBackColor = true;
 			this.button3.Visible = false;
+			this.button3.Click += new System.EventHandler(this.Button3Click);
 			// 
 			// button2
 			// 
@@ -385,9 +390,6 @@ namespace Edusoft2
 			this.button2.Text = "Vytváranie mapy";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.Button2Click);
-			this.button3.Click += new System.EventHandler(this.Button3Click);
-			this.button4.Click += new System.EventHandler(this.Button4Click);
-			this.button5.Click += new System.EventHandler(this.Button5Click);
 			// 
 			// button1
 			// 
@@ -440,6 +442,7 @@ namespace Edusoft2
 			// 
 			this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(205)))), ((int)(((byte)(175)))));
+			this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";

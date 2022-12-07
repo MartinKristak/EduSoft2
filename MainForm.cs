@@ -26,10 +26,10 @@ namespace Edusoft2
 		{			
 			
 			InitializeComponent();
-			this.bmp.Add(new Bitmap("..\\..\\spirites\\00.png"));
-			this.bmp.Add(new Bitmap("..\\..\\spirites\\33.png"));
-			this.bmp.Add(new Bitmap("..\\..\\spirites\\22.png"));
-			this.bmp.Add(new Bitmap("..\\..\\spirites\\44.png"));
+			this.bmp.Add(new Bitmap("spirites\\00.png"));
+			this.bmp.Add(new Bitmap("spirites\\33.png"));
+			this.bmp.Add(new Bitmap("spirites\\22.png"));
+			this.bmp.Add(new Bitmap("spirites\\44.png"));
 			
 			brush = new TextureBrush(bmp[0], WrapMode.Tile);
 			KeyPreview = true;
@@ -351,8 +351,8 @@ namespace Edusoft2
 				if (x < Math.Sqrt(playground.Length) && y < Math.Sqrt(playground.Length)) {
 					playground[y, x] += 1;
 					if (playground[y, x] == 2 && numberPlayerOnPlayground() == 2) 
-						playground[y, x] = 0; 
-					if (playground[y, x] == 3) 
+						playground[y, x] = 3; 
+					if (playground[y, x] == 4) 
 						playground[y, x] = 0;
 					panel1.Invalidate(); 
 				}

@@ -22,3 +22,11 @@ C:\Users\patri\Desktop\edu\edu 2\EduSoft2\obj\Debug\Edusoft2.MainForm.resources
 C:\Users\patri\Desktop\edu\edu 2\EduSoft2\obj\Debug\Edusoft2.csproj.GenerateResource.Cache
 C:\Users\patri\Desktop\edu\edu 2\EduSoft2\obj\Debug\Edusoft2.exe
 C:\Users\patri\Desktop\edu\edu 2\EduSoft2\obj\Debug\Edusoft2.pdb
+C:\Škola\Softver-Projekt\EduSoft2\bin\Debug\Edusoft2.exe.config
+C:\Škola\Softver-Projekt\EduSoft2\bin\Debug\Edusoft2.exe
+C:\Škola\Softver-Projekt\EduSoft2\bin\Debug\Edusoft2.pdb
+C:\Škola\Softver-Projekt\EduSoft2\obj\Debug\Edusoft2.csprojResolveAssemblyReference.cache
+C:\Škola\Softver-Projekt\EduSoft2\obj\Debug\Edusoft2.MainForm.resources
+C:\Škola\Softver-Projekt\EduSoft2\obj\Debug\Edusoft2.csproj.GenerateResource.Cache
+C:\Škola\Softver-Projekt\EduSoft2\obj\Debug\Edusoft2.exe
+C:\Škola\Softver-Projekt\EduSoft2\obj\Debug\Edusoft2.pdb

@@ -105,7 +105,7 @@ namespace Edusoft2
 				loadPlayground(); 
 			}
 			else {
-				playground = new int[8, 8];
+				playground = new int[6, 6];
 				panel1.Invalidate(); 
 			}
 			
@@ -130,7 +130,12 @@ namespace Edusoft2
 		void TrackBar1ValueChanged(object sender, EventArgs e)
 		{
 			int value = trackBar1.Value;
+			if(value > 9){
+				value = 9;
+			}
 			label4.Text = "Veľkosť poľa:\n" + value + "X" + value;
+			playground = new int[value, value];
+			panel1.Invalidate();
 		}
 		
 		protected override void OnPaint(PaintEventArgs e) {

@@ -330,6 +330,7 @@ namespace Edusoft2
 			// 
 			this.trackBar1.LargeChange = 2;
 			this.trackBar1.Location = new System.Drawing.Point(8, 40);
+			this.trackBar1.Maximum = 9;
 			this.trackBar1.Minimum = 6;
 			this.trackBar1.Name = "trackBar1";
 			this.trackBar1.Size = new System.Drawing.Size(520, 56);

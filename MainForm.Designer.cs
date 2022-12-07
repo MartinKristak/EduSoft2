@@ -441,7 +441,7 @@ namespace Edusoft2
 			// panel1
 			// 
 			this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(205)))), ((int)(((byte)(175)))));
+			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(186)))), ((int)(((byte)(107)))));
 			this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -459,6 +459,7 @@ namespace Edusoft2
 			this.ClientSize = new System.Drawing.Size(1287, 853);
 			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.panel2);
+			this.DoubleBuffered = true;
 			this.Margin = new System.Windows.Forms.Padding(2);
 			this.MinimumSize = new System.Drawing.Size(800, 600);
 			this.Name = "MainForm";

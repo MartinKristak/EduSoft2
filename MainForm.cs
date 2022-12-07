@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
 
@@ -19,19 +20,31 @@ namespace Edusoft2
 		HashSet<int> completedLevels = new HashSet<int>();
 		Boolean hraci = true;
 		List<Bitmap> bmp = new List<Bitmap>();
+		TextureBrush brush;
+		int last = -1;
 		public MainForm()
 		{			
 			
 			InitializeComponent();
 			this.bmp.Add(new Bitmap("..\\..\\spirites\\00.png"));
-			this.bmp.Add(new Bitmap("..\\..\\spirites\\22.png"));
 			this.bmp.Add(new Bitmap("..\\..\\spirites\\33.png"));
+			this.bmp.Add(new Bitmap("..\\..\\spirites\\22.png"));
+			
+			brush = new TextureBrush(bmp[0], WrapMode.Tile);
 			KeyPreview = true;
 			this.FormBorderStyle = FormBorderStyle.None;
-    			this.WindowState = FormWindowState.Maximized;      		
+    		this.WindowState = FormWindowState.Maximized;      		
 			loadPlayground(); 
 		}
-		
+		protected override CreateParams CreateParams
+		{
+			get
+			{
+				CreateParams handleparam = base.CreateParams;
+				handleparam.ExStyle |= 0x02000000;
+				return base.CreateParams;
+			}
+		}
 		void Button1Click(object sender, EventArgs e)//hraci rezim
 		{
 			if(hraci) return;
@@ -347,28 +360,18 @@ namespace Edusoft2
 			 
 		}
 
-		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
 			Graphics g = e.Graphics;
-			int playground_size = Math.Min(panel1.Width, panel1.Height);
-			//cell_size = playground_size / Convert.ToInt32(Math.Sqrt(playground.Length));			 			
-			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
-				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
-						//g.FillRectangle(Brushes.White, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
-				    	//g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);
-				    	g.DrawImage(bmp[0], i*cell_size, j*cell_size);
-			    	if (playground[i, j] == 0) {
-			    		//pass		    		
-			    	}
-			    	else if (playground[i, j] == 1) {		    		
-			    		//g.FillEllipse(Brushes.Yellow, j*cell_size+cell_size/4, i*cell_size+cell_size/4, cell_size/2, cell_size/2); 
-						g.DrawImage(bmp[2], j*cell_size, i*cell_size);			    		
+			int size = (int)Math.Sqrt(playground.Length);
+			g.FillRectangle(brush, 0, 0, cell_size*size, cell_size*size);
+			for (int i = 0; i<size; i++) {
+				for (int j = 0; j<size; j++) {
+					if (playground[i, j] == 1) {		    		
+						g.DrawImage(bmp[1], j*cell_size, i*cell_size);			    		
 			    	}
 			    	else if (playground[i, j] == 2) {
-				    		g.DrawImage(RotateImage(bmp[1], (player.get_turned_to()+2)*90), j*cell_size, i*cell_size);
-			    		//g.FillRectangle(Brushes.Blue, j*cell_size, i*cell_size, cell_size, cell_size); 			    		
-				    	//g.DrawRectangle(Pens.Black, j*cell_size, i*cell_size, cell_size, cell_size);			    					    			
+				    	g.DrawImage(RotateImage(bmp[2], (player.get_turned_to()+2)*90), j*cell_size, i*cell_size);			    					    			
 			    	}
 			    }	    				
 			}
@@ -392,6 +395,7 @@ namespace Edusoft2
 		  }
 		  return returnBitmap;
 		}
+	
 		
 		class Player {
 			int pos_x; 

@@ -29,6 +29,7 @@ namespace Edusoft2
 			this.bmp.Add(new Bitmap("..\\..\\spirites\\00.png"));
 			this.bmp.Add(new Bitmap("..\\..\\spirites\\33.png"));
 			this.bmp.Add(new Bitmap("..\\..\\spirites\\22.png"));
+			this.bmp.Add(new Bitmap("..\\..\\spirites\\44.png"));
 			
 			brush = new TextureBrush(bmp[0], WrapMode.Tile);
 			KeyPreview = true;
@@ -161,18 +162,13 @@ namespace Edusoft2
 				label3.Text = "vyriešené úlohy: " + completedLevels.Count;
 			}			
 			int size = Int32.Parse(r.ReadLine().Trim().Split(' ')[0]);
-			playground = new int[size, size];
-			string[] player_pos = r.ReadLine().Trim().Split(' ');
-			int player_x = Int32.Parse(player_pos[0]);
-			int player_y = Int32.Parse(player_pos[1]);				
-			playground[player_x, player_y] = 2;			
-			while (!r.EndOfStream) 
-			{
-				string[] coin_pos = r.ReadLine().Trim().Split(' ');
-				int pos_x = Int32.Parse(coin_pos[0]);
-				int pos_y = Int32.Parse(coin_pos[1]);				
-				playground[pos_x, pos_y] = 1; 
-			}
+			playground = new int[size, size];						
+			for (int i = 0; i<size; i++) {
+				string[] line = r.ReadLine().Trim().Split(' ');
+				for (int j = 0; j<line.Length; j++)
+					playground[i, j] = Int32.Parse(line[j]);				
+					
+			}			
 			r.Close();
 			player = new Player();			
 			panel1.Invalidate(); 
@@ -189,13 +185,12 @@ namespace Edusoft2
 			filename = "map_" + filename.Replace(":", "_");			
 			StreamWriter w = new StreamWriter("saved_maps/" + filename + ".txt");     
 			w.WriteLine("sada1");                          
-			w.WriteLine(Math.Sqrt(playground.Length).ToString());
-			w.WriteLine(player.get_pos_y().ToString() + " " + player.get_pos_x().ToString());
+			w.WriteLine(Math.Sqrt(playground.Length).ToString());			
 			for (int i = 0; i<Math.Sqrt(playground.Length); i++) {
-				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {
-				    	if (playground[i, j] == 1) 
-				    		w.WriteLine(i.ToString() + " " + j.ToString()); 
+				for (int j = 0; j<Math.Sqrt(playground.Length); j++) {				    	 
+					w.Write(playground[i, j].ToString() + " ");
 				}
+				w.WriteLine(); 
 			}
 			w.Close();
 			MessageBox.Show("Uložená mapa: " + filename); 
@@ -271,7 +266,7 @@ namespace Edusoft2
 				if (command.Equals("vpred")) {
 					if (player.move() == false) {
 						panel1.Invalidate();
-						MessageBox.Show("Týmito príkazmi hráč vyšiel z hracej plochy! Skúste znova.");						 
+						MessageBox.Show("Týmito príkazmi hráč vyšiel z hracej plochy alebo si narazil na prekážku! Skúste znova.");						 
 						vykonaj_btn.Enabled = false;
 						znova_btn.Enabled = true;
 						return; 
@@ -374,11 +369,14 @@ namespace Edusoft2
 				for (int j = 0; j<size; j++) {
 					if (playground[i, j] == 1) {		    		
 						g.DrawImage(bmp[1], j*cell_size, i*cell_size);			    		
-			    	}
-			    	else if (playground[i, j] == 2) {
-				    	g.DrawImage(RotateImage(bmp[2], (player.get_turned_to()+2)*90), j*cell_size, i*cell_size);			    					    			
-			    	}
-			    }	    				
+			    		}
+				    	else if (playground[i, j] == 2) {
+					    	g.DrawImage(RotateImage(bmp[2], (player.get_turned_to()+2)*90), j*cell_size, i*cell_size);			    					    			
+				    	}
+				    	else if (playground[i, j] == 3) {
+					    	g.DrawImage(bmp[3], j*cell_size, i*cell_size);			    					    			
+				    	}					
+				}	    				
 			}
 		}
 		
@@ -457,6 +455,8 @@ namespace Edusoft2
 				if (turned_to == 3) 
 					pos_x--; 				
 				if (pos_x < 0 || pos_y < 0 || pos_x == Math.Sqrt(playground.Length) || pos_x == Math.Sqrt(playground.Length))
+					return false;
+				if (playground[pos_y, pos_x] == 3)
 					return false; 
 				playground[pos_y, pos_x] = 2;					
 				return true; 
